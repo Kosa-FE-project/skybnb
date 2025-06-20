@@ -1,0 +1,25 @@
+# 빌드 출력물
+/build/
+*.class
+
+# IDE 설정 파일
+/.classpath
+/.project
+/.settings/
+*.iml
+
+# OS 관련
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
+
+# 백업/임시 파일
+*~
+*.swp
+*.bak
+
+# 기타 무시할 수 있는 항목
+target/
+out/
