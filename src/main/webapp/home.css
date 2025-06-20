@@ -28,10 +28,8 @@ html, body {
 
 .home-container {
   min-height: 100vh; 
-  padding: 20vh 2rem 4rem; 
+  padding: 20vh 0 ; 
 }
-
-
 
 .page2 {
   background: #FBF7F1;
