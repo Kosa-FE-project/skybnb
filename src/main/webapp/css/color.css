@@ -1,0 +1,19 @@
+/* color.css */
+
+/* color */
+:root {
+  --color-primary: #EB512D;
+  --color-yellow-light: #FEFFCE;
+  --color-olive: #78794B;
+  --color-pink-light: #FBF7F1;
+  --color-blue-light: #D6DAF6;
+  --color-positive-bg: #FDF2F0;
+  --color-black-text: #3A3A3A;
+}
+
+/* 
+사용 방법 !!
+css에서
+color : var(--color-primary);
+이렇게 사용하면 됩니당
+ */
