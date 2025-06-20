@@ -4,9 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
+    
+    <link rel="stylesheet" href="./css/login.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/color.css" />
     <link rel="stylesheet" href="./css/reset.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+  $(document).ready(function() {
+    const $toggle = $('.switch input');
+    const $label = $('#mode-label');
+    const $button = $('#welcome-btn');
+
+    function syncLabel() {
+        const isUser = $toggle.is(':checked');
+        $label.text(isUser ? 'User' : 'Admin');
+    }
+    $(window).on('pageshow', function() {
+      syncLabel();
+    });
+
+    // 토글 상태 바뀔 때 텍스트 Admin -> User
+    $toggle.on('change', function() {
+        const newText = $(this).is(':checked') ? 'User' : 'Admin';
+        
+        $label.fadeOut(200, function() {
+            $(this).text(newText).fadeIn(100);
+        });
+    });
+
+    // 버튼 클릭 시 페이지 이동
+    $button.on('click', function() {
+      const isUser = $toggle.is(':checked');
+      if (isUser) {
+        window.location.href = './user-home.html';
+      } else {
+        window.location.href = './admin-home.html';
+      }
+    });
+  });
+</script>
 <style>
 
 </style>
@@ -15,10 +54,23 @@
 <body>
     <div class="page-wrapper">
 
-        <div class="container">
-            <h1>로그인 페이지</h1>
-            <div><a href="./admin-home.html" >admin page</a></div>
-            <div><a href="./user-home.html" >user page</a></div>
+        <div class="background">
+            <div class="bg-overlay"></div>
+            <div class="login-card">
+            <img src="./img/login_circle.png" alt="Profile" class="profile-img">
+            <p class="subtitle">skyB&B</p>
+            <h1 class="helloworld">Hello World!</h1>
+            <button id="welcome-btn" class="welcome-btn">WELCOME</button>
+            <div class="switch-wrapper">
+                <p id="mode-label">Admin</p>
+                <div class="toggle-wrapper">
+                    <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 </body>
