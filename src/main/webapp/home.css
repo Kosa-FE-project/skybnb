@@ -1,0 +1,40 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+.home-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('image.jpg') center center / cover no-repeat;
+  z-index: -1;
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+}
+
+.home-container {
+  min-height: 100vh; 
+  padding: 20vh 2rem 4rem; 
+}
+
+
+
+.page2 {
+  background: #FBF7F1;
+  border-radius: 40px 40px 0 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
