@@ -8,6 +8,40 @@
     <link rel="stylesheet" href="./home.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./admin-home.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+$(()=>{
+	const ctx=$('#chart-age-canvas');
+		
+	const data = {
+			  labels: [
+			    '20대',
+			    '30대',
+			    '40대'
+			  ],
+			  datasets: [{
+			    label: 'My First Dataset',
+			    data: [300, 50, 100],
+			    backgroundColor: [
+			      'rgb(255, 99, 132)',
+			      'rgb(54, 162, 235)',
+			      'rgb(255, 205, 86)'
+			    ],
+			    hoverOffset: 15
+			  }]
+	};
+	
+	const config = {
+			  type: 'doughnut',
+			  data: data,
+			};
+	new Chart(ctx,config);
+	
+});
+</script>
 </head>
 <body>
  
@@ -29,7 +63,39 @@
         <div class="home-container page2 page-wrapper">
 
             <!-- 여기다 쭉쭉 만들면 된다 -->
-             <div class="container">HI</div>
+             <div class="container">HI
+             	<div class="admin-dashboard">
+					<!-- 상단 통계 -->
+					<div class="admin-top-stats">
+						<div class="admin-card admin-stat">
+							<div class="admin-value">186</div>
+							<div class="admin-label">reservations</div>
+						</div>
+						<div class="admin-card admin-stat">
+							<div class="admin-value">$6,667</div>
+						</div>
+						<div class="admin-card admin-stat">
+							<div class="admin-admin-value">$198</div>
+						</div>
+						<div class="admin-card admin-stat">
+							<div class="admin-value">$222</div>
+						</div>
+					</div>
+			
+					<!-- 중간 차트 -->
+					<div class="admin-middle-charts">
+						<div class="admin-card admin-chart"><canvas id="chart-age-canvas">Age Chart</canvas></div>
+						<div class="admin-card admin-chart">Monthly Revenue</div>
+						<div class="admin-card admin-chart">Monthly Guest</div>
+					</div>
+			
+					<!-- 하단 지도 + 랭킹 -->
+					<div class="admin-bottom-section">
+						<div class="admin-card admin-map">Map</div>
+						<div class="admin-card admin-ranking">Ranking</div>
+					</div>
+				</div>
+             </div>
         </div>
     </section>
 </body>

@@ -1,0 +1,72 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: sans-serif;
+  background: #eaf6ff;
+}
+
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 공통 카드 스타일 */
+.admin-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 120px;
+  flex: 1;
+}
+
+/* 상단 통계 */
+.admin-top-stats {
+  display: flex;
+  gap: 1rem;
+  background-image: url('./img/admin_top_card.png');
+  background-size : cover;
+}
+
+.admin-stat .admin-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.admin-stat .admin-label {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.3rem;
+}
+
+/* 중간 차트 */
+.admin-middle-charts {
+  display: flex;
+  gap: 1rem;
+}
+
+/* 하단 지도 + 랭킹 */
+.admin-bottom-section {
+  display: flex;
+  gap: 1rem;
+}
+.admin-map {
+  flex: 2;
+  min-height: 250px;
+}
+.admin-ranking {
+  flex: 1;
+  min-height: 250px;
+}
+canvas {
+	position: relative;
+	z-index: 1; /* 차트를 위로 */
+}
