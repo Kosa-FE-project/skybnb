@@ -13,6 +13,26 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+  <script defer>
+    window.onload = function () {
+      const interval = setInterval(() => {
+        confetti({
+            origin: { x: Math.random(), y: 0 },      // 위에서
+            particleCount: 5,
+            spread: 180,             // 넓게 펼침
+            startVelocity: 10,       // 떨어지는 속도
+            gravity: 1,            // 중력 느낌
+            ticks: 600,              // 유지 시간
+            scalar: 0.8,             // 입자 크기
+        });
+      }, 10);
+
+      setTimeout(() => {
+        clearInterval(interval);
+      }, 3000);
+    };
+  </script>
 </head>
 <body>
 
@@ -160,6 +180,5 @@ document.querySelectorAll('.heart').forEach(btn => {
     );
   });
 });
-
  </script>
 </html>
