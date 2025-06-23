@@ -1,3 +1,13 @@
+/* 이미지 드래그 방지 */
+img {
+  user-select: none;
+  -webkit-user-drag: none;   /* Safari에서 드래그 방지 */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE10+ */
+}
+
+
 /* 파리 */
 .paris-container {
     /* height 주면 될듯 - 크기 조절용 */
@@ -33,6 +43,17 @@
         color: #EB512D;
     }
 }
+
+.paris-title::selection, .paris-text::selection {
+  background: #EB512D;  
+  color: #fff;         
+}
+
+.paris-gh::selection, .marquee::selection {
+  background: #87CEFA;
+  color: #0047AB;
+}
+
 
 .paris-text {
     font-size: 80px;
@@ -145,8 +166,17 @@
   line-height: 1.2;
 }
 
+.seoul-title::selection {
+  background: #FFD966;
+}
+
 .seoul-title span {
   color: #EB512D;
+}
+
+.seoul-tagline::selection {
+  background: #5ba146;
+  color: #fff;
 }
 
 .seoul-tagline {
@@ -181,6 +211,10 @@
   font-weight: bold;
 }
 
+.track::selection {
+  background: #c345f1;
+  color: #ceff2e;  
+}
 
 /* 로마 */
 .rome-overlay {
@@ -190,7 +224,7 @@
   width: 100%;
   height: 100%;
 
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.1); 
   z-index: 0;
 }
 
@@ -198,7 +232,9 @@
 .rome-container {
   position: relative;
   width: 100%;
-  height: 120vh;
+  height: 115vh;
+
+  padding: 80px 195px 0;
 
   background-image: url('./img/user_rome-bg.png');
   background-size: cover;
@@ -206,11 +242,17 @@
   background-repeat: no-repeat;
 
   background-attachment: fixed;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .rome-photo {
   position: relative;
   z-index: 1;
+  img {
+    width: 670px;
+  }
 }
 
 .rome-content {
@@ -218,12 +260,58 @@
   z-index: 1;
   color: #FEFFCE;
 
+  writing-mode: vertical-rl;
+  font-size: 200px;
 }
 
 .rome-title {
-
+  margin-top: -40px;
+  /* animation: slideDown 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;  */
 }
 
 .rome-text {
-
+  margin-top: 250px;
+  /* animation: slideDown 0.8s ease-out forwards;
+  animation-delay: 0.8s; 
+  opacity: 0; */
 }
+
+.rome-title,
+.rome-text {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: all 0.8s ease-out;
+}
+
+.rome-title::selection,
+.rome-text::selection {
+  background: #fa6f94;
+  color: #FEFFCE;   
+}
+
+.rome-title.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.rome-text.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
+}
+
+
+/* 
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */

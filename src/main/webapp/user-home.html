@@ -13,26 +13,6 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/reset.css" />
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            const bgSection = document.querySelector('.home-bg');
-            const contentSection = document.querySelector('.home-content');
-
-            const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
-            const scrollY = window.scrollY;
-
-            if (scrollY >= bgBottom - 10) {
-            header.style.backgroundColor = '#FBF7F1';
-            header.style.color = '#7D7D59';
-            } else {
-            header.style.backgroundColor = 'transparent';
-            header.style.color = '#FEFFCE';
-            }
-        });
-    </script>
-
-
 </head>
 <body>
     <header class="header">
@@ -69,7 +49,7 @@
                             <div class="paris-title">
                                 Paris
                                 <br />
-                                <span>Gusethouse</span>
+                                <span class="paris-gh">Gusethouse</span>
                             </div>
                             <div class="paris-text">
                                 Your Paris, 
@@ -128,7 +108,7 @@
                 </div>
                 <div class="rome-content">
                     <div class="rome-title">
-                        Guest 작업중 ~!~!~
+                        Guest
                     </div>
                     <div class="rome-text">
                         House 
@@ -139,4 +119,39 @@
         </div>
     </section>
 </body>
+ <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const bgSection = document.querySelector('.home-bg');
+            const contentSection = document.querySelector('.home-content');
+
+            const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
+            const scrollY = window.scrollY;
+
+            if (scrollY >= bgBottom - 10) {
+            header.style.backgroundColor = '#FBF7F1';
+            header.style.color = '#7D7D59';
+            } else {
+            header.style.backgroundColor = 'transparent';
+            header.style.color = '#FEFFCE';
+            }
+        });
+
+
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.querySelector('.rome-title').classList.add('show');
+                document.querySelector('.rome-text').classList.add('show');
+                observer.disconnect(); // 한 번만 실행
+            }
+            });
+        }, {
+            threshold: 0.4, // 요소가 40% 보이면 실행
+        });
+
+        observer.observe(document.querySelector('.rome-content'));
+
+
+    </script>
 </html>
