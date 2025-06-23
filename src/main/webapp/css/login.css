@@ -74,6 +74,10 @@ body, html {
     box-shadow: 0 2px 5px rgba(2,2,2,0.3);
 }
 
+.welcome-btn:hover {
+  background-color: rgb(252, 255, 239);
+  transition: .3s;
+}
 
 .toggle-wrapper {
   display: flex;
