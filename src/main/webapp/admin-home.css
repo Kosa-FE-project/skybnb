@@ -4,10 +4,14 @@
 }
 body {
   margin: 0;
-  padding: 2rem;
   font-family: sans-serif;
   background: #eaf6ff;
 }
+ /* admin 페이지 바탕스타일*/
+.page2{
+	background: #EAF6FE !important;
+}
+
 
 .admin-dashboard {
   display: flex;
@@ -28,24 +32,51 @@ body {
   min-height: 120px;
   flex: 1;
 }
-
 /* 상단 통계 */
+.admin-top-title>h3{
+	margin : 10px 10px 10px 20px;
+}
 .admin-top-stats {
-  display: flex;
-  gap: 1rem;
-  background-image: url('./img/admin_top_card.png');
-  background-size : cover;
+	height:200px;
+	background-image: url('./img/admin_top_card.png');
+	background-size : 100% 100%;
+}
+
+.admin-top-card{
+	display: flex;
+	flex-flow : row;
+	justify-content : center;
+	align-items: center;
+	text-align: center;
+	gap: 50px;
+	height:120px;
+}
+
+.admin-stat{
+	display: flex;
+	flex-flow: column;
+	justify-content : flex-start;
+	align-items: start;
+	width : 200px;
+	height:120px;
+	background:rgba(255, 255, 255, 0.5);
+	border-radius: 1rem;
+	padding: 10px;
+}
+
+.admin-stat .admin-label {
+	font-size: 15px;
+	color: #888;
+	margin-top: 3px;
 }
 
 .admin-stat .admin-value {
-  font-size: 2rem;
+  font-size: 50px;
   font-weight: bold;
+  width:100%;
+  text-align:center;
 }
-.admin-stat .admin-label {
-  font-size: 0.75rem;
-  color: #888;
-  margin-top: 0.3rem;
-}
+
 
 /* 중간 차트 */
 .admin-middle-charts {
@@ -66,7 +97,9 @@ body {
   flex: 1;
   min-height: 250px;
 }
-canvas {
+.admin-chart {
 	position: relative;
 	z-index: 1; /* 차트를 위로 */
+	width: 300px;
+	height: 450px;
 }
