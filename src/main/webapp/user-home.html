@@ -13,26 +13,6 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/reset.css" />
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            const bgSection = document.querySelector('.home-bg');
-            const contentSection = document.querySelector('.home-content');
-
-            const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
-            const scrollY = window.scrollY;
-
-            if (scrollY >= bgBottom - 10) {
-            header.style.backgroundColor = '#FBF7F1';
-            header.style.color = '#7D7D59';
-            } else {
-            header.style.backgroundColor = 'transparent';
-            header.style.color = '#FEFFCE';
-            }
-        });
-    </script>
-
-
 </head>
 <body>
     <header class="header">
@@ -60,6 +40,7 @@
         <div class="home-container page2">
              <div class="container">
 
+                <!-- 파리 -->
                 <div class="paris-container">
                     <div class="paris-wrapper">
                         <div class="paris-photo">
@@ -69,7 +50,7 @@
                             <div class="paris-title">
                                 Paris
                                 <br />
-                                <span>Gusethouse</span>
+                                <span class="paris-gh">Gusethouse</span>
                             </div>
                             <div class="paris-text">
                                 Your Paris, 
@@ -90,9 +71,9 @@
                             </div>
                         </div>
                     </div>
-
              </div>
 
+             <!-- 서울 -->
              <div class="seoul-container">
                 <div class="overlay"></div>
                 <div class="seoul-background-text">GUEST HOUSE</div>
@@ -114,6 +95,7 @@
                 </div>
             </div>
 
+            <!-- 글씨 -->
             <div class="letter-container">
                 <div class="track">
                     <span>It’s more than a guesthouse.
@@ -121,6 +103,7 @@
                 </div>
             </div>
 
+            <!-- 로마 -->
             <div class="rome-container">
                 <div class="rome-overlay"></div>
                 <div class="rome-photo">
@@ -128,7 +111,7 @@
                 </div>
                 <div class="rome-content">
                     <div class="rome-title">
-                        Guest 작업중 ~!~!~
+                        Guest
                     </div>
                     <div class="rome-text">
                         House 
@@ -136,7 +119,70 @@
                 </div>
             </div>
 
+            <!-- 런던 -->
+            <div class="london-container">
+            <div class="london-photo">
+                <img src="./img/user_london-bg.png" alt="London room" />
+            </div>
+
+            <div class="london-red">
+                <div class="london-top-text">
+                    <img src="./img/user_london-title1.png" />
+                </div>
+
+                <div class="london-subtext-box">
+                    <img src="./img/user_london-title2.png" />
+                </div>
+                <div class="london-lasttext-box">
+                    <img src="./img/user_london-title3.png" />
+                </div>
+
+                <div class="london-logo">
+                    <img src="./img/user_london-ug.png" alt="London Logo" />
+                <div class="london-title">
+                    <img src="./img/user_london-text.png" />
+                </div>
+                </div>
+            </div>
+            </div>
+
+
         </div>
     </section>
 </body>
+ <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const bgSection = document.querySelector('.home-bg');
+            const contentSection = document.querySelector('.home-content');
+
+            const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
+            const scrollY = window.scrollY;
+
+            if (scrollY >= bgBottom - 10) {
+            header.style.backgroundColor = '#FBF7F1';
+            header.style.color = '#7D7D59';
+            } else {
+            header.style.backgroundColor = 'transparent';
+            header.style.color = '#FEFFCE';
+            }
+        });
+
+
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.querySelector('.rome-title').classList.add('show');
+                document.querySelector('.rome-text').classList.add('show');
+                observer.disconnect(); // 한 번만 실행
+            }
+            });
+        }, {
+            threshold: 0.4, // 요소가 40% 보이면 실행
+        });
+
+        observer.observe(document.querySelector('.rome-content'));
+
+
+    </script>
 </html>
