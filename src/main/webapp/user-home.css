@@ -159,3 +159,23 @@
   border: 5px solid #EB512D;
   border-radius: 15px;
 }
+
+.letter-container {
+  background-color: #FEFFCE; 
+  overflow: hidden;
+  width: 100%;
+  padding: 30px 0;
+  position: relative;
+}
+
+.track {
+  display: flex;
+  white-space: nowrap;
+}
+
+.track span {
+  font-size: 64px;
+  color: #DD4400;
+  padding-right: 60px; 
+  font-weight: bold;
+}
