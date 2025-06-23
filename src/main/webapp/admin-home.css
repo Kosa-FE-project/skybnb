@@ -83,23 +83,57 @@ body {
   display: flex;
   gap: 1rem;
 }
-
-/* 하단 지도 + 랭킹 */
-.admin-bottom-section {
-  display: flex;
-  gap: 1rem;
-}
-.admin-map {
-  flex: 2;
-  min-height: 250px;
-}
-.admin-ranking {
-  flex: 1;
-  min-height: 250px;
-}
 .admin-chart {
 	position: relative;
 	z-index: 1; /* 차트를 위로 */
 	width: 300px;
 	height: 450px;
 }
+
+/* 하단 지도 + 랭킹 */
+.admin-bottom-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.admin-map-card{
+  background: white;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 120px;
+  flex-grow:2;
+}
+
+.admin-map-wrrap{
+	display : flex;
+	gap:10px;
+	flex:1;
+}
+.admin-list{
+	align-content: center;
+}
+.admin-map-list{
+	align-items: center;
+}
+.admin-map {
+	flex:1;
+	min-height: 250px;
+	border-radius: 20px;
+	overflow: hidden;
+	
+}
+
+.admin-rank-card{
+  background: white;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  flex-grow:1;
+  text-align: center;
+}
+

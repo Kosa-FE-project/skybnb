@@ -9,13 +9,17 @@
 <link rel="stylesheet" href="./css/style.css" />
 <link rel="stylesheet" href="./css/reset.css" />
 <link rel="stylesheet" href="./admin-home.css" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- bootStrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<!-- Jquery (반드시 있어야 함!) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Chart.js (반드시 있어야 함!) -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<!-- jVectorMap Core (반드시 있어야 함!) -->
+<script src="https://cdn.jsdelivr.net/npm/jvectormap@1.2.2/jquery-jvectormap.min.js"></script>
+<!--  대한민국 지도 데이터 -->
+<script src="./jquery-jvectormap-kr-mill.js"></script>
 <script>
 $(()=>{
 	Chart.register(ChartDataLabels);
@@ -38,7 +42,7 @@ $(()=>{
 			      '#F2C94C',
 			      '#C5CAE9'
 			    ],
-			   	hoverOffset: 15
+			   	hoverOffset: 25
 			  }]
 	};
 	
@@ -51,8 +55,16 @@ $(()=>{
 				  	radius : '80%',   // <-- 핵심, 기본은 100%
 				    cutout: '60%',           // 도넛 두께 조절
 				    plugins: {
-				      legend: { display: true,
-				    	 		position: 'top',
+				      legend: { 
+				   			display: true,
+		    	 			position: 'top',
+		    	 			labels:{
+		    	 			font: {
+		    	 	            size: 12
+		    	 	          },
+		    	 	        boxWidth: 20,
+		    	 	        boxHeight: 20
+		    	 			}
 				      },   // 범례 숨기기(원하면 true)
 				      tooltip: { enabled: true },  // 툴팁 끄기(선택)
 				      datalabels: {
@@ -144,6 +156,7 @@ $(()=>{
 			  },
 			};
 	new Chart(revenueCtx,revenuConfig);
+	
 	//Guest 차트
 	const guestCtx=$('#chart-guest-canvas');
 	const guestData = {
@@ -207,9 +220,64 @@ $(()=>{
 			  },
 	};
 	
-	
 	new Chart(guestCtx,guestConfig);
-});
+	
+	//Map 부분
+	const reservationData = {
+	    "KR-11": 200, "KR-26": 550, "KR-27": 340, "KR-28": 670,
+	    "KR-29": 290, "KR-30": 410, "KR-31": 180, "KR-41": 880,
+	    "KR-42": 420, "KR-43": 310, "KR-44": 270, "KR-45": 370,
+	    "KR-46": 490, "KR-47": 200, "KR-48": 330, "KR-49": 1500,
+	    "KR-50": 120
+	};
+	
+	const regionNamesKo = {
+	  "KR-11": "서울", "KR-26": "부산", "KR-27": "대구", "KR-28": "인천",
+	  "KR-29": "광주", "KR-30": "대전", "KR-31": "울산", "KR-41": "경기",
+	  "KR-42": "강원", "KR-43": "충북", "KR-44": "충남", "KR-45": "전북",
+	  "KR-46": "전남", "KR-47": "경북", "KR-48": "경남", "KR-49": "제주",
+	  "KR-50": "세종"
+	};
+
+	$('.admin-map').vectorMap({
+		map: 'kr_mill',
+		backgroundColor: '#e0f7fa',
+		zoomButtons: false, // 확대/축소 버튼 비활성화
+	 	zoomOnScroll: true, // (선택) 휠 줌도 끄고 싶다면
+		showTooltip: true,
+		regionStyle: {
+		  initial: { fill: '#CCCCCC' },
+		  hover: { fill: '#5DADE2' },
+		  selected: { fill: '#FF7043' }
+		},
+		series: {
+		  regions: [{
+		    values: {
+		      "KR-11": "#FADBD8", "KR-26": "#D6EAF8", "KR-27": "#D5F5E3",
+		      "KR-28": "#FCF3CF", "KR-29": "#F5EEF8", "KR-30": "#F9E79F",
+		      "KR-31": "#E8DAEF", "KR-50": "#E0F7FA", "KR-41": "#FDEBD0",
+		      "KR-42": "#D4E6F1", "KR-43": "#D1F2EB", "KR-44": "#FAD7A0",
+		      "KR-45": "#FCF3CF", "KR-46": "#F9E79F", "KR-47": "#A9DFBF",
+		      "KR-48": "#AED6F1", "KR-49": "#FADBD8"
+		    },
+		    attribute: 'fill'
+		  }]
+		},
+	
+		onRegionClick: function (event, code) {
+		    const name = regionNamesKo[code] || code;
+		    const count = reservationData[code] || 0;
+		    $('.admin-map-list').text(`${name} 예약 수: ${count}건`);
+		  },
+	
+		onLabelShow: function (event, label, code) {
+			const name = regionNamesKo[code] || code;
+			label.text(name);
+		}
+	
+	});
+    
+});//ready
 </script>
 </head>
 <body>
@@ -219,7 +287,6 @@ $(()=>{
 			<div class="container">Admin page</div>
 		</div>
 	</section>
-
 
 	<section class="home-content">
 		<div class="home-container page1">
@@ -271,8 +338,25 @@ $(()=>{
 
 					<!-- 하단 지도 + 랭킹 -->
 					<div class="admin-bottom-section">
-						<div class="admin-card admin-map">Map</div>
-						<div class="admin-card admin-ranking">Ranking</div>
+						<div class="admin-map-card ">
+							<div class="admin-map-wrrap">
+								<div class="admin-list">
+									<h4>지역별 예약 건수</h4>
+									<div class="admin-map-list">
+									</div>
+								</div>
+								<div class="admin-map"></div>
+							</div>
+						</div>
+						<div class="admin-rank-card"><h2>Ranking</h2>
+							<div>
+								<p>1등 ??????게스트하우스</p>
+								<p>2등 ??????게스트하우스</p>
+								<p>3등 ??????게스트하우스</p>
+								<p>4등 ??????게스트하우스</p>
+								<p>5등 ??????게스트하우스</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
