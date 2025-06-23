@@ -79,7 +79,7 @@ html, body {
 
 .home-container {
   min-height: 100vh; 
-  padding: 10vh 0; 
+  padding: 10vh 0 0; 
 }
 
 .page2 {

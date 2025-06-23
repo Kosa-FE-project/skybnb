@@ -121,30 +121,64 @@
 
             <!-- 런던 -->
             <div class="london-container">
-            <div class="london-photo">
-                <img src="./img/user_london-bg.png" alt="London room" />
-            </div>
-
-            <div class="london-red">
-                <div class="london-top-text">
-                    <img src="./img/user_london-title1.png" />
+                <div class="london-photo">
+                    <img src="./img/user_london-bg.png" alt="London room" />
                 </div>
 
-                <div class="london-subtext-box">
-                    <img src="./img/user_london-title2.png" />
+                <div class="london-red">
+                    <div class="london-top-text">
+                        <img src="./img/user_london-title1.png" />
+                    </div>
+
+                    <div class="london-subtext-box">
+                        <img src="./img/user_london-title2.png" />
+                    </div>
+                    <div class="london-lasttext-box">
+                        <img src="./img/user_london-title3.png" />
+                    </div>
+
+                    <div class="london-logo">
+                        <img src="./img/user_london-ug.png" alt="London Logo" />
+                    <div class="london-title">
+                        <img src="./img/user_london-text.png" />
+                    </div>
+                    </div>
                 </div>
-                <div class="london-lasttext-box">
-                    <img src="./img/user_london-title3.png" />
+            </div>
+
+            <!-- 푸터 -->
+             <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <!-- <img src="로고" alt="logo" /> -->
+                        <span>🗺️ skyB&B.</span>
+                    </div>
+
+                    <div class="footer-contact">
+                    <h3>Contact us</h3>
+                    <ul>
+                        <li>
+                        <strong>So yuna</strong><br />
+                        <a href="mailto:seacrab808@naver.com">seacrab808@naver.com</a>
+                        </li>
+                        <li>
+                        <strong>Lee</strong><br />
+                        <a href="mailto:dalbogi5@gmail.com">dalbogi5@gmail.com</a>
+                        </li>
+                        <li>
+                        <strong>Kang</strong><br />
+                        <a href="mailto:alsrlwpdhkd@gmail.com">alsrlwpdhkd@gmail.com</a>
+                        </li>
+                    </ul>
+                    </div>
                 </div>
 
-                <div class="london-logo">
-                    <img src="./img/user_london-ug.png" alt="London Logo" />
-                <div class="london-title">
-                    <img src="./img/user_london-text.png" />
+                <hr />
+                <div class="footer-bottom">
+                    <p>© 2025 한국소프트웨어산업협회. All rights reserved.</p>
                 </div>
-                </div>
-            </div>
-            </div>
+            </footer>
+
 
 
         </div>
@@ -174,11 +208,11 @@
             if (entry.isIntersecting) {
                 document.querySelector('.rome-title').classList.add('show');
                 document.querySelector('.rome-text').classList.add('show');
-                observer.disconnect(); // 한 번만 실행
+                observer.disconnect();
             }
             });
         }, {
-            threshold: 0.4, // 요소가 40% 보이면 실행
+            threshold: 0.4, 
         });
 
         observer.observe(document.querySelector('.rome-content'));
