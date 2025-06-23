@@ -1,11 +1,6 @@
-.page-wrapper {
-  width: 100%;
-  justify-content: center;
-}
 
 .container {
   width: 100%;
-  max-width: 1520px;        
   padding: 0 200px;      
   box-sizing: border-box;
 }
