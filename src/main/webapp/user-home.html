@@ -5,31 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Home</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="./home.css" />
+    <link rel="stylesheet" href="./user-home.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/reset.css" />
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const bgSection = document.querySelector('.home-bg');
+            const contentSection = document.querySelector('.home-content');
+
+            const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
+            const scrollY = window.scrollY;
+
+            if (scrollY >= bgBottom - 10) {
+            header.style.backgroundColor = '#FBF7F1';
+            header.style.color = '#7D7D59';
+            } else {
+            header.style.backgroundColor = 'transparent';
+            header.style.color = '#FEFFCE';
+            }
+        });
+    </script>
+
+
 </head>
 <body>
- 
-    <section class="home-bg">
-        <div class="page-wrapper">
-            <div class="container">
-                User page
+    <header class="header">
+        <h1 class="logo">skyB&B</h1>
+        <img class="header-icon" src="./img/mypage-icon.svg" alt="icon">
+    </header>
 
-            </div>
+    <section class="home-bg">
+        <img src="./img/userpage_mainbg.png" alt="mainbg" />
+        <div class="text-overlay">
+            <p class="project">KOSA Front-end Project</p>
+            <h2>GUESTHOUSE<br>RESERVATION<br>SYSTEM</h2>
         </div>
+        <!-- <div class="page-wrapper">
+            <div class="container">
+            </div>
+        </div> -->
     </section>
    
 
     <section class="home-content">
         <div class="home-container page1"> 
-            <!-- 여기는 스크롤 하면 같이 올라가는 애 쓰면 된당 -->
         </div>
 
-        <div class="home-container page2 page-wrapper">
+        <div class="home-container page2">
+             <div class="container">
 
-            <!-- 여기다 쭉쭉 만들면 된다 -->
-             <div class="container">HI</div>
+                <div class="paris-container">
+                    <div class="paris-wrapper">
+                        <div class="paris-photo">
+                            <img src="./img/user_paris.png" alt="paris" />
+                        </div>
+                        <div class="paris-content">
+                            <div class="paris-title">
+                                Paris
+                                <br />
+                                <span>Gusethouse</span>
+                            </div>
+                            <div class="paris-text">
+                                Your Paris, 
+                                <br />
+                                your pace.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee">
+                        <div class="marquee-track">
+                                <span class="marquee-text">
+                                Wake up to the charm of Paris – your home away from home.
+                                </span>
+                                <span class="marquee-text">
+                                Comfort, culture, and croissants — experience it all at our Paris guesthouse. Wake up to the charm of Paris – your home away from home.
+                                </span>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+             </div>
+
+             <div class="seoul-container">
+                <div class="overlay"></div>
+                <div class="seoul-background-text">GUEST HOUSE</div>
+                <div class="seoul-background-text">GUEST HOUSE</div>
+                <div class="seoul-background-text">GUEST HOUSE</div>
+
+                <div class="seoul-wrapper">
+                    <div class="seoul-text-box">
+                    <h1 class="seoul-title">Seoul <br><span>GuestHouse</span></h1>
+                    <div class="seoul-tagline">
+                        <p>Not just a stay.</p>  
+                        <p>A vibe in every corner.  </p> 
+                    </div>
+                    </div>
+
+                    <div class="seoul-photo-box">
+                    <img src="./img/user_seoul.png" alt="seoulImg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-container">
+                <div class="track">
+                    <span>It’s more than a guesthouse.
+                    It’s your basecamp for adventure, your backdrop for inspiration, your story waiting to unfold.</span>
+                </div>
+            </div>
+
+            <div class="rome-container">
+                <div class="rome-overlay"></div>
+                <div class="rome-photo">
+                    <img src="./img/user_rome.png" alt="rome" />
+                </div>
+                <div class="rome-content">
+                    <div class="rome-title">
+                        Guest 작업중 ~!~!~
+                    </div>
+                    <div class="rome-text">
+                        House 
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 </body>
