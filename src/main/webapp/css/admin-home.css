@@ -1,13 +1,8 @@
 @charset "UTF-8";
 * {
-  box-sizing: border-box;
+  font-family: "Inria Serif", serif !important;
+  font-weight: 700 !important;
 }
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: #eaf6ff;
-}
- /* admin 페이지 바탕스타일*/
 .page2{
 	background: #EAF6FE !important;
 }
@@ -117,16 +112,29 @@ body {
 	flex:1;
 }
 .admin-list{
-	align-content: center;
+	display:flex;
+	flex-flow:row;
 }
-.admin-map-list{
-	font-size: 30px;
-	align-items: center;
-	color: #EB512D;
+.admin-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 40px;
+}
+.admin-item {
+  width: 150px;
+  height: 25px;
+  background-color: #d3d3d3;
+  border-radius: 4px;
+}
+
+.admin-item.selected {
+  background-color: #e6ffe6;
 }
 .admin-map {
 	flex:1;
-	min-height: 250px;
+	width: 370px;
+	height: 400px;
 	border-radius: 20px;
 	overflow: hidden;
 	
