@@ -6,20 +6,25 @@
 <title>Admin Home</title>
 
 <link rel="stylesheet" href="./home.css" />
+<link rel="stylesheet" href="./user-home.css" />
 <link rel="stylesheet" href="./css/style.css" />
 <link rel="stylesheet" href="./css/reset.css" />
-<link rel="stylesheet" href="./admin-home.css" />
+<link rel="stylesheet" href="./css/admin-home.css" />
 <!-- bootStrap -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <!-- Jquery (반드시 있어야 함!) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Chart.js (반드시 있어야 함!) -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 <!-- jVectorMap Core (반드시 있어야 함!) -->
-<script src="https://cdn.jsdelivr.net/npm/jvectormap@1.2.2/jquery-jvectormap.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/jvectormap@1.2.2/jquery-jvectormap.min.js"></script>
 <!--  대한민국 지도 데이터 -->
-<script src="./jquery-jvectormap-kr-mill.js"></script>
+<script src="./js/jquery-jvectormap-kr-mill.js"></script>
 <script>
 $(()=>{
 	Chart.register(ChartDataLabels);
@@ -80,82 +85,118 @@ $(()=>{
 				        offset: 2,            // 원에서 얼마나 떨어질지
 				        font: { weight: 'bold', size: 14 },
 				        color: '#455A64'      // 글자색
-				      }
-				    }
-				  }
-			};
-	new Chart(ageCtx,ageConfig);
-	
-	//Revenue 차트
-	const revenueCtx=$('#chart-revenue-canvas');
-	const revenueData = {
-			labels : [
-				'January','February','March','April','May','June','July','August','September','October',
-			    'November','December'
-			  ],
-			  datasets: [{
-				  label: '매출액',
-				    data: [35000,45000,25000,35000,55000,60000,75000,85000,45000,55000,35000,65000],
-				    backgroundColor: '#D6DAF6',
-				    borderWidth: 2,
-				    borderRadius: 10,
-			  },
-		/* 	  {
-				  label: '예약건수',
-				    data: [1500, 2000, 800, 2000, 3000, 2400, 4000, 5000, 2400, 1200, 2500, 4000],
-				    backgroundColor: [
-				      '#2D9CDB',
-				    ],
-				    borderWidth: 2,
-				    borderRadius: 3,
-			  } */
-			  
-			  ]
-	}
-	const revenuConfig = {
-			  type: 'bar',
-			  data: revenueData,
-			  options: {
-				maintainAspectRatio: false,
-			    responsive: true,
-			    scales: {
-	    		    x: {
-	    		      ticks: {
-						maxRotation:45,
-						minRotation:45,
-	    		        font: {
-	    		          size: 10 // 원하는 폰트 크기로 변경
-	    		        }
-	    		      }
-	    		    },
-			        y: {
-			          min: 0 // Y축 최소값 설정
-			        }
-			  	},
-				plugins: {
-						legend: {
-							position: 'top',
-						},
-				title: {
+				      },
+					 title: {
 						display: true,
-						text: 'Monthly revenue',
+						text: 'Age Comparison',
 				       	font: {
 				       		size: 30,
 				       		color : '#3A3A3A',
 				       		position: 'top', 
 				       	}
-						},
-				tooltip: {
-						enabled: true
-						},
-				datalabels: {
-						display: false // 데이터 라벨 비활성화
-				}
-						
-				}
-			  },
-			};
-	new Chart(revenueCtx,revenuConfig);
+					 }
+				      
+				    },
+
+			}
+	};
+	new Chart(ageCtx,ageConfig);
+	
+	//Revenue 차트
+	const revenueCtx = $('#chart-revenue-canvas');
+	const revenueData = {
+	  labels: [
+	    'January','February','March','April','May','June',
+	    'July','August','September','October','November','December'
+	  ],
+	  datasets: [
+	    {
+	      type: 'bar',
+	      label: '매출액',
+	      data: [35000, 45000, 25000, 35000, 55000, 60000, 75000, 85000, 45000, 55000, 35000, 65000],
+	      backgroundColor: '#D6DAF6',
+	      borderWidth: 2,
+	      borderRadius: 10,
+	      yAxisID: 'y',
+	      order:2,
+	    },
+	    {
+	      type: 'line',
+	      label: '예약건수',
+	      data: [250, 350, 150, 250, 450, 500, 650, 750, 350, 450, 250, 550],
+	      backgroundColor:  '#FF6B8A',
+	      borderColor: '#FF6B8A',
+	      borderWidth: 2,
+	      pointRadius: 4,
+	      yAxisID: 'y1',
+	      order:1,
+	    }
+	  ]
+	};
+
+	const revenueConfig = {
+	  data: revenueData,
+	  options: {
+	    maintainAspectRatio: false,
+	    responsive: true,
+	    scales: {
+	      x: {
+	        ticks: {
+        	  autoSkip: false,
+	          maxRotation: 45,
+	          minRotation: 45,
+	          font: {
+	            size: 10
+	          }
+	        }
+	      },
+	      y: {
+	        position: 'left',
+	        ticks: {
+	          callback: value => '$' + value.toLocaleString()
+	        }
+	      },
+	      y1: {
+	        position: 'right',
+	       	min : 0,
+	        max :1000,
+	        grid: {
+	          drawOnChartArea: false
+	        }
+	      }
+	    },
+	    plugins: {
+	      legend: {
+	        position: 'top',
+	      },
+	      title: {
+	        display: true,
+	        text: 'Monthly revenue',
+	        font: {
+	          size: 30
+	        },
+	        color: '#3A3A3A',
+	      },
+	      tooltip: {
+	        callbacks: {
+	          label: ctx => {
+	            const value = ctx.parsed.y;
+	            const label = ctx.dataset.label;
+	            // 매출일 경우 달러표시, 예약건수는 단순 숫자
+	            return label === '매출액'
+	              ? `${label}: $${value.toLocaleString()}`
+	              : `${label}: ${value.toLocaleString()}건`;
+	          }
+	        }
+	      },
+	      datalabels: {
+	        display: false
+	      }
+	    }
+	  }
+	};
+
+new Chart(revenueCtx, revenueConfig);
 	
 	//Guest 차트
 	const guestCtx=$('#chart-guest-canvas');
@@ -180,6 +221,7 @@ $(()=>{
 			  	responsive: true,
 			  	scales: {
 			        y: {
+			          max: 6000,
 			          min: 0 // Y축 최소값 설정
 			        }
 			  	},
@@ -190,7 +232,7 @@ $(()=>{
 			        loop: (context) => context.active
 			      }
 			    },
-			    hoverRadius: 5,
+			    hoverRadius: 8,
 			    hoverBackgroundColor: 'yellow',
 			    interaction: {
 			      mode: 'nearest',
@@ -281,10 +323,17 @@ $(()=>{
 </script>
 </head>
 <body>
-
+	<header class="header">
+		<h1 class="logo">skyB&B</h1>
+		<img class="header-icon" src="./img/mypage-icon.svg" alt="icon">
+	</header>
 	<section class="home-bg">
-		<div class="page-wrapper">
-			<div class="container">Admin page</div>
+		<img src="./img/userpage_mainbg.png" alt="mainbg" />
+		<div class="text-overlay">
+			<p class="project">KOSA Front-end Project</p>
+			<h2>
+				GUESTHOUSE<br>ANALYSIS<br>SYSTEM
+			</h2>
 		</div>
 	</section>
 
@@ -341,26 +390,105 @@ $(()=>{
 						<div class="admin-map-card ">
 							<div class="admin-map-wrrap">
 								<div class="admin-list">
-									<h4>지역별 예약 건수</h4>
-									<div class="admin-map-list">
-									</div>
+									<h2>지역별 예약 건수</h2>
+									<div class="admin-map-list"></div>
 								</div>
 								<div class="admin-map"></div>
 							</div>
 						</div>
-						<div class="admin-rank-card"><h2>Ranking</h2>
-							<div>
-								<p>1등 ??????게스트하우스</p>
-								<p>2등 ??????게스트하우스</p>
-								<p>3등 ??????게스트하우스</p>
-								<p>4등 ??????게스트하우스</p>
-								<p>5등 ??????게스트하우스</p>
+
+						<div class="admin-rank-card">
+							<h2>🏆 Ranking</h2>
+							<div class="ranking-item">
+								<div class="medal">🥇</div>
+								<div class="info">
+									<div class="name">강릉 솔게스트하우스</div>
+									<div class="revenue">$12,000</div>
+								</div>
 							</div>
+							<div class="ranking-item">
+								<div class="medal">🥈</div>
+								<div class="info">
+									<div class="name">첵앤아웃 게스트하우스</div>
+									<div class="revenue">$10,000</div>
+								</div>
+							</div>
+							<div class="ranking-item">
+								<div class="medal">🥉</div>
+								<div class="info">
+									<div class="name">파티 이끌림 게스트하우스</div>
+									<div class="revenue">$9,000</div>
+								</div>
+							</div>
+							<div class="ranking-item">
+								<div class="medal">4등</div>
+								<div class="info">
+									<div class="name">ZIBRO S 게스트하우스</div>
+									<div class="revenue">$5,000</div>
+								</div>
+							</div>
+							<div class="ranking-item">
+								<div class="medal">5등</div>
+								<div class="info">
+									<div class="name">김PD 게스트하우스</div>
+									<div class="revenue">$4,000</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <!-- <img src="로고" alt="logo" /> -->
+                        <span>🗺️ skyB&B.</span>
+                    </div>
+
+                    <div class="footer-contact">
+                    <h3>Contact us</h3>
+                    <ul>
+                        <li>
+                        <strong>So yuna</strong><br />
+                        <a href="mailto:seacrab808@naver.com">seacrab808@naver.com</a>
+                        </li>
+                        <li>
+                        <strong>Lee</strong><br />
+                        <a href="mailto:dalbogi5@gmail.com">dalbogi5@gmail.com</a>
+                        </li>
+                        <li>
+                        <strong>Kang</strong><br />
+                        <a href="mailto:alsrlwpdhkd@gmail.com">alsrlwpdhkd@gmail.com</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="footer-bottom">
+                    <p>© 2025 한국소프트웨어산업협회. All rights reserved.</p>
+                </div>
+            </footer>
 		</div>
 	</section>
 </body>
+<script>
+	window.addEventListener('scroll', () => {
+	    const header = document.querySelector('.header');
+	    const bgSection = document.querySelector('.home-bg');
+	    const contentSection = document.querySelector('.home-content');
+	
+	    const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
+	    const scrollY = window.scrollY;
+	
+	    if (scrollY >= bgBottom - 10) {
+	    header.style.backgroundColor = '#eaf6ff';
+	    header.style.color = '#7D7D59';
+	    } else {
+	    header.style.backgroundColor = 'transparent';
+	    header.style.color = '#FEFFCE';
+	    }
+	});
+</script>
 </html>
