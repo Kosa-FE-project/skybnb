@@ -111,28 +111,29 @@ body {
   background-color: #f2c1b5;
   padding: 60px 20px;
   text-align: center;
-  min-height: 450px;
+  min-height: 580px;
+  overflow: hidden;
 }
 
 .bg-text {
-  font-size: 6rem;
+  font-size: 180px;
   font-weight: bold;
   color: #ED7D60;
   position: absolute;
-  top: 10px;
-  left: 50%;
+  top: -30px;
+  left:55%;
   transform: translateX(-50%);
   white-space: nowrap;
   z-index: 0;
-  letter-spacing: 20px;
+  font-family: 'Inria Serif', serif;
 }
 .bg-text:nth-child(2) {
-  top: 30%;
+  top: 25%;
   left:45%;
 }
 
 .bg-text:nth-child(3) {
-  top: 60%;
+  top: 55%;
   left:55%;
 }
 
@@ -146,14 +147,14 @@ body {
 }
 
 .room-card {
-  width: 250px;
+  width: 300px;
   border-radius: 12px;
   overflow: hidden;
   position:relative;
   background: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 0;
-  margin: 0 20px 0 20px;
+  margin: 20px 20px 0 20px;
   border: 2.5px solid white;
   transition: transform 0.3 ease;
 }
@@ -195,15 +196,15 @@ body {
 }
 
 .reservation h2 {
-  font-size: 3rem;
-  margin-bottom: 40px;
+  font-size: 50px;
+  margin-bottom: 20px;
   color: #78794B;
-  font-weight: lighter;
+  font-weight: 600;
   letter-spacing: 4px;
 }
 .reservation hr{
     width: 810px; 
-    height: 1px; 
+    height: 2px; 
     margin: 0 auto; 
     background: #78794B; 
     border:0;
@@ -256,6 +257,10 @@ input {
   border-radius: 6px;
   color:#3A3A3A;
   box-shadow: 0 1px 2px #78794B;
+}
+
+input:focus {
+  outline: 2px solid #78794B; 
 }
 
 .form-row {
