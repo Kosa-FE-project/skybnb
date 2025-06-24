@@ -20,12 +20,11 @@
     <section class="intro">
         <h1>Paris Guesthouse</h1>
         <p class="sub-title">Paris cozy sweet very nice Guesthouse</p>
-        <div class="intro-image-container">
-            <div class="image-wrap">
-                <img src="./img/booking_gh.svg" alt="Main Room" class="intro-image"/>
-                <div class="tag">in Paris</div>
-                <div class="intro-label">COZY <br/>PARIS GH</div>
-            </div>
+        <div class="intro-inner">
+            <img src="./img/booking_gh.svg" alt="Main Room" class="intro-image" />
+            <div class="image-frame"></div>
+            <div class="intro-tag">in Paris</div>
+            <div class="intro-label">COZY <br> PARIS GH</div>
         </div>
     </section>
       <!-- Room Preview Section -->
@@ -37,15 +36,15 @@
         
         <div class="rooms">
             <div class="room-card" data-name="Room A">
-                <img src="./img/booking_rooma.png" alt="Room A"/>
+                <img src="./img/booking_rooma.svg" alt="Room A"/>
                 <div class="overlay">Room A</div>
             </div>
             <div class="room-card" data-name="Room B">
-                <img src="./img/booking_roomb.png" alt="Room B"/>
+                <img src="./img/booking_roomb.svg" alt="Room B"/>
                 <div class="overlay">Room B</div>
             </div>
             <div class="room-card" data-name="Room C">
-                <img src="./img/booking_roomc.png" alt="Room C"/>
+                <img src="./img/booking_roomc.svg" alt="Room C"/>
                 <div class="overlay">Room C</div>
             </div>
         </div>
@@ -57,7 +56,7 @@
     <br><br>
     <div class="reservation-container">
       <div class="reservation-image">
-        <img src="./img/booking_reroom.svg" alt="Room B" />
+        <img src="./img/booking_roomb.svg" alt="Room B" />
       </div>
       <form class="reservation-form">
         <div class="form-group">
@@ -65,8 +64,8 @@
           <p>Paris Guesthouse</p>
         </div>
         <div class="form-group">
-          <label>Room type</label>
-          <p>Room B</p>
+          <label for="roomtype">Room type</label>
+          <input type="text" id="roomtype" name="roomtype" value="Room B" readonly />
         </div>
         <div class="form-group">
           <label for="name">Name</label>
@@ -125,6 +124,29 @@
     overlay.textContent = name;
 
     card.appendChild(overlay);
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const roomCards = document.querySelectorAll(".room-card");
+        const reservationSection = document.querySelector(".reservation");
+        const reservationImage = document.querySelector(".reservation-image img");
+        const roomTypeInput = document.querySelector("#roomtype");
+
+        reservationSection.style.display = "none";
+
+        roomCards.forEach(card => {
+            card.addEventListener("click", () => {
+            
+            reservationSection.style.display = "block";
+
+            const imgSrc = card.querySelector("img").getAttribute("src");
+            reservationImage.setAttribute("src", imgSrc);
+
+            const roomName = card.getAttribute("data-name");
+            roomTypeInput.value = roomName;
+
+            reservationSection.scrollIntoView({ behavior: "smooth" });
+            });
+        });
     });
 </script>
 </html>

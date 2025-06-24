@@ -9,14 +9,29 @@
             margin: 0;
             background-color: #fdf6ee;
             font-family: "Inter", sans-serif;
+            padding-top:100px;
         }
+        .header {
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            font-size: 2.5rem;
+            color:#7D7D59;
+        }
+
         .layout {
             display: flex;
             flex-wrap: nowrap;
         }
         .sidebar {
          position: fixed;
-         top: 70px; /* 원하는 여백 */
+         top: 100px; /* 원하는 여백 */
          left: 0;
          width: 180px;
          height: 75vh;
