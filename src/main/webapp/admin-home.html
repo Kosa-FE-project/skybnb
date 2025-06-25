@@ -28,6 +28,61 @@
 <script src="./js/jquery-jvectormap-kr-mill.js"></script>
 <script>
 $(()=>{
+	 //setInterval 이미지 자동변경 함수
+	 const img = document.getElementById("media-img");
+	 const video = document.getElementById("media-video");
+
+	 const images = ["./img/userpage_mainbg.png", "./img/userpage_mainbg2.png", "./img/userpage_mainbg3.png"];
+	 let imgIndex = 0;
+	 let mainInterval;
+
+	 function showImage(index) {
+	   img.src = images[index];
+	   img.style.display = "block";
+	   video.style.display = "none";
+	   video.pause();
+	 }
+
+	 function playVideo() {
+	   img.style.display = "none";
+	   video.style.display = "block";
+	   video.currentTime = 0;
+	   video.muted = true;
+	   video.play();
+	 }
+
+	 // 주기적 순환 실행
+	 function startCycle() {
+	   showImage(0); // 시작 이미지
+	   imgIndex = 1;
+
+	   // 이미지 3장 순환: 5초 간격
+	   mainInterval = setInterval(() => {
+	     if (imgIndex < images.length) {
+	       showImage(imgIndex);
+	       imgIndex++;
+	     } else {
+	       clearInterval(mainInterval);
+	       playVideo();
+
+	       // 20초 후 이미지 1로 돌아가며 루프 반복
+	       setTimeout(startCycle, 20000);
+	     }
+	   }, 5000);
+	 }
+
+	 startCycle();
+	 
+	 
+	 //페이지 이동 코드
+	 $('.header-icon').on('click',function(){
+		 window.location.href = "./my-page.html";
+	 })
+	  $('.logo').on('click',()=>{
+		  window.location.href = "./index.html";
+	  })
+	 
+	 
 	Chart.register(ChartDataLabels);
 	
 	//Age 차트
@@ -346,7 +401,8 @@ new Chart(revenueCtx, revenueConfig);
 		<img class="header-icon" src="./img/mypage-icon.svg" alt="icon">
 	</header>
 	<section class="home-bg">
-		<img src="./img/userpage_mainbg.png" alt="mainbg" />
+		 <img id="media-img" src="./img/userpage_mainbg.png" alt="mainbg" />
+        <video id="media-video" src="./media/userpage_mainbg4.mp4"></video>
 		<div class="text-overlay">
 			<p class="project">KOSA Front-end Project</p>
 			<h2>
@@ -514,21 +570,24 @@ new Chart(revenueCtx, revenueConfig);
 	</section>
 </body>
 <script>
-	window.addEventListener('scroll', () => {
-	    const header = document.querySelector('.header');
-	    const bgSection = document.querySelector('.home-bg');
-	    const contentSection = document.querySelector('.home-content');
-	
-	    const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
-	    const scrollY = window.scrollY;
-	
-	    if (scrollY >= bgBottom - 10) {
-	    header.style.backgroundColor = '#eaf6ff';
-	    header.style.color = '#7D7D59';
-	    } else {
-	    header.style.backgroundColor = 'transparent';
-	    header.style.color = '#FEFFCE';
-	    }
-	});
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    const bgSection = document.querySelector('.home-bg');
+    const contentSection = document.querySelector('.home-content');
+    const header_icon = document.querySelector('.header-icon');
+
+    const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
+    const scrollY = window.scrollY;
+
+    if (scrollY >= bgBottom - 10) {
+    header.style.backgroundColor = '#EAF6FE';
+    header.style.color = '#7D7D59';
+    header_icon.setAttribute('src','./img/mypage-icon2.svg');
+    } else {
+    header.style.backgroundColor = 'transparent';
+    header.style.color = '#FEFFCE';
+    header_icon.setAttribute('src','./img/mypage-icon.svg');
+    }
+});
 </script>
 </html>

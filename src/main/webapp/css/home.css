@@ -27,7 +27,9 @@
 .header .logo {
   margin: 0;
 }
-
+.logo{
+	cursor: pointer;
+}
 .header-icon {
   width: 32px;
   height: 32px;
