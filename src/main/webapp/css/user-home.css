@@ -244,7 +244,7 @@ img {
 
   padding: 80px 195px 0;
 
-  background-image: url('./img/user_rome-bg.png');
+  background-image: url('../img/user_rome-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
