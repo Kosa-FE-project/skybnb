@@ -290,42 +290,84 @@ input:focus {
   cursor: pointer;
 }
 
-/* Footer */
+/* 푸터 */
 .footer {
-  background: #444;
-  color: white;
-  padding: 30px 40px;
+  background-color: #494949;
+  color: #ccc;
+  padding: 80px 195px;
+  font-family: 'Georgia', serif;
+}
+
+.footer-content {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  font-size: 0.9rem;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 30px;
 }
 
 .footer-logo {
-  font-weight: bold;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 400px;
 }
 
-.footer-contacts {
+.footer-logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-logo span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #D7D7D7;
+}
+
+.footer-contact {
+  color: #AFAFAF;
+}
+
+.footer-contact h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #D7D7D7;
+}
+
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  gap: 40px;
+  gap: 60px;
   flex-wrap: wrap;
 }
 
-.footer a {
-  color: #ddd;
-  text-decoration: none;
-  font-size: 0.85rem;
+.footer-contact li {
+  font-size: 15px;
 }
 
-.footer a:hover {
+.footer-contact a {
+  color: #bdbdbd;
   text-decoration: underline;
 }
 
-footer .copyright {
-  font-size: 0.75rem;
-  color: #aaa;
+.footer-contact a:hover {
+  color: #ffffff;
 }
+
+.footer hr {
+  border: none;
+  border-top: 1px solid #626262;
+  margin: 20px 0;
+}
+
+.footer-bottom {
+  text-align: right;
+  font-size: 13px;
+  color: #626262;
+}
+
 
 .my-swal-popup{
   background: linear-gradient(to bottom, #FDF2F0, #ffeedd) !important;
