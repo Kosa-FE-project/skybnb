@@ -15,25 +15,47 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
-  <script defer>
-    window.onload = function () {
-      const interval = setInterval(() => {
-        confetti({
-            origin: { x: Math.random(), y: 0 },      // 위에서
-            particleCount: 5,
-            spread: 180,             // 넓게 펼침
-            startVelocity: 10,       // 떨어지는 속도
-            gravity: 1,            // 중력 느낌
-            ticks: 600,              // 유지 시간
-            scalar: 0.8,             // 입자 크기
-        });
-      }, 10);
+  <style>
+  .emoji-particle {
+    position: fixed;
+    top: 0;
+    font-size: 12px;
+    animation: fall 3s linear forwards;
+    pointer-events: none;
+    z-index: 9999;
+  }
 
-      setTimeout(() => {
-        clearInterval(interval);
-      }, 3000);
-    };
-  </script>
+  @keyframes fall {
+    to {
+      transform: translateY(60vh);
+      opacity: 0;
+    }
+  }
+</style>
+
+<script defer>
+  window.onload = function () {
+    const emojis = ['❤️', '🩷', '💖', '🧡', '💚','🩵'];
+
+    const interval = setInterval(() => {
+      for (let i = 0; i < 5; i++) {
+        const emoji = document.createElement('span');
+        emoji.className = 'emoji-particle';
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.fontSize = (Math.random() * 6 + 12) + 'px';
+        document.body.appendChild(emoji);
+
+        // 삭제
+        setTimeout(() => emoji.remove(), 3000);
+      }
+    }, 50);
+
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 3000);
+  };
+</script>
 </head>
 <body>
   <header class="header">
@@ -223,6 +245,24 @@ document.querySelectorAll('.heart').forEach(btn => {
       isLiked ? './img/mypage/mypage_deljjim.svg' : './img/mypage/mypage_jjim.svg'
     );
   });
+});
+
+window.addEventListener('scroll',()=>{
+    const sidebar=document.querySelector('.sidebar');
+    const footer=document.querySelector('.footer');
+
+    const sidebarHeight=sidebar.offsetHeight;
+    const scrollY=window.scrollY;
+    const sidebarTop=sidebar.offsetTop;
+    const footerTop=footer.offsetTop;
+
+    if(scrollY+sidebarHeight+100>footerTop){
+      sidebar.classList.add('stop');
+      sidebar.style.top=(footerTop-sidebarHeight-100)+'px';
+    }else {
+      sidebar.classList.remove('stop');
+      sidebar.style.top = '200px';
+    }
 });
  </script>
 </html>

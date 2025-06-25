@@ -31,7 +31,7 @@ body {
 }
 .sidebar {
   position: fixed;
-  top: 100px; /* 원하는 여백 */
+  top: 200px; /* 원하는 여백 */
   left: 0;
   width: 180px;
   height: 75vh;
@@ -43,9 +43,11 @@ body {
   flex-direction: column;
   align-items: center;
   margin-left: 80px;
-  z-index: 1000;
+  z-index: 100;
 }
-
+.sidebar.stop{
+    position: absolute;
+}
 .profile {
   margin: 20px;
   margin-bottom: 25px;
