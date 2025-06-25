@@ -10,6 +10,7 @@
     <!-- slick 스타일 CDN -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -117,24 +118,24 @@
                         </label>
                         <label>
                         <span>Room type</span>
-                        <input type="text" value="Room A" readonly />
+                        <input type="text" id="roomtype" value="Room A" readonly />
                         </label>
                         <label>
                         <span>Reservation person</span>
-                        <input type="text" value="Sophia Jung" readonly />
+                        <input type="text" id="name" value="Sophia Jung" readonly />
                         </label>
                         <label>
                         <span>Number of people</span>
-                        <input type="text" value="adult 2" readonly />
+                        <input type="text" id="peoplenum" value="adult 2" readonly />
                         </label>
                         <div class="reservation-checkdate">
                             <label class="checkin">
                             <span>Check in</span>
-                            <input type="text" value="2025.09.13" readonly />
+                            <input type="text" id="checkindate" value="2025.09.13" readonly />
                             </label>
                             <label class="checkout">
                             <span>Check out</span>
-                            <input type="text" value="2025.09.25" readonly />
+                            <input type="text" id="checkoutdate" value="2025.09.25" readonly />
                             </label>
                         </div>
                     </div>
@@ -146,9 +147,18 @@
               </div>
               </div>
         </div>
-        </div>
 </body>
 <script>
+$(function(){
+	const ls = JSON.parse(localStorage.getItem('reservationData'));
+	if (ls) {
+		$('#roomtype').val(ls.roomtype);
+	    $('#name').val(ls.username);
+	    $('#checkindate').val(ls.checkindate);
+	    $('#checkoutdate').val(ls.checkoutdate);
+	    $('#peoplenum').val(ls.peoplenum);
+	}
+});
 document.querySelectorAll('.card').forEach(card => {
   const img = card.querySelector('img');
   const name = img.getAttribute('name') || '';

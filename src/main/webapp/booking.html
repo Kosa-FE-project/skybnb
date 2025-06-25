@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <header class="header">
     <div class="logo">skyB&B</div>
     <div class="icon-user">
-      <img src="./img/user_icon.svg" alt="User" />
+      <img class="header-icon" src="./img/user_icon.svg" alt="User" />
     </div>
     </header>
     <!-- intro Section -->
@@ -71,23 +72,22 @@
         </div>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" required="required" />
+          <input type="text" id="name" name="name" required="required" />
         </div>
         <div class="form-row">
           <div class="form-group dates">
             <div class="date-field">
                 <label for="checkindate">Checkin Date</label>
-                <input type="date" id="checkindate" />
+                <input type="date" id="checkindate" name="checkindate" />
             </div>
             <div class="date-field">
                 <label for="checkoutdate">Checkout Date</label>
-                <input type="date" id="checkoutdate" />
+                <input type="date" id="checkoutdate" name="checkoutdate" />
             </div>
           </div>
           <div class="form-group">
             <label for="people">People</label>
               <input type="number" id="peoplenum" name="peoplenum" min="1" value="1" />
-            </select>
           </div>
         </div>
         <button type="submit" class="btn-reserve">reserve</button>
@@ -117,6 +117,16 @@
   </footer>
 </body>
 <script>
+$(function(){
+	 //페이지 이동 코드
+	 $('.header-icon').on('click',function(){
+		 window.location.href = "./my-page.html"
+	 })
+	 
+	 $('.logo').on('click',()=>{
+		  window.location.href = "./user-home.html";
+	  })
+});
     document.querySelectorAll('.room-card').forEach(card => {
     const img = card.querySelector('img');
     const name = img.getAttribute('name');
@@ -168,7 +178,18 @@
           }
         }).then((result)=>{
           if(result.isConfirmed){
-            this.submit();
+        	//데이터 불러오기
+	          const data = {
+			    roomtype: $('#roomtype').val(),
+			    username: $('#name').val(),
+			    checkindate: $('#checkindate').val(),
+			    checkoutdate: $('#checkoutdate').val(),
+			    peoplenum: $('#peoplenum').val()
+			  };
+	       // localStorage 저장
+	          localStorage.setItem('reservationData', JSON.stringify(data));
+	          window.location.href = './my-page.html';
+           /*this.submit(); */
           }
         });
     });

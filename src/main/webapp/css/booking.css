@@ -21,10 +21,13 @@ body {
   font-size: 2.5rem;
   color:#7D7D59;
 }
-
+.logo{
+	cursor: pointer;
+}
 .icon-user img {
   width: 48px;
   height: 48px;
+  cursor: pointer;
 }
 
 /* intro Section */
