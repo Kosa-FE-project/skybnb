@@ -22,7 +22,7 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="logo">HeartThread</h1>
+      <h1 class="logo"><img src="./img/logo_red.svg" /></h1>
       <img class="header-icon" src="./img/mypage-icon.svg" alt="icon" />
     </header>
 
@@ -31,7 +31,10 @@
       <video id="media-video" src="./media/userpage_mainbg4.mp4"></video>
       <div class="text-overlay">
         <p class="project">Heart Thread</p>
-        <h2>Like an invisible thread,<br />perhaps our fates were<br />already intertwined.</h2>
+        <h2>
+          Like an invisible thread,<br />perhaps our fates were<br />already
+          intertwined.
+        </h2>
       </div>
       <!-- <div class="page-wrapper">
             <div class="container">
@@ -48,7 +51,11 @@
           <div class="paris-container">
             <div class="paris-wrapper">
               <div class="paris-photo">
-                <img class="scroll-animate" src="./img/image (2).png" alt="paris" />
+                <img
+                  class="scroll-animate"
+                  src="./img/image (2).png"
+                  alt="paris"
+                />
               </div>
               <div class="paris-content">
                 <div class="paris-title text-slide-right">
@@ -66,10 +73,13 @@
             <div class="marquee">
               <div class="marquee-track">
                 <span class="marquee-text">
-                  Wake up to soft moonlight — where stories bloom at Maison Lune.
+                  Wake up to soft moonlight — where stories bloom at Maison
+                  Lune.
                 </span>
                 <span class="marquee-text">
-                  Serenity, connection, and quiet moments — feel them all at Bloom, Maison Lune. Wake up to soft moonlight — where stories bloom at Maison Lune.
+                  Serenity, connection, and quiet moments — feel them all at
+                  Bloom, Maison Lune. Wake up to soft moonlight — where stories
+                  bloom at Maison Lune.
                 </span>
               </div>
             </div>
@@ -85,7 +95,9 @@
 
           <div class="seoul-wrapper">
             <div class="seoul-text-box">
-              <h1 class="seoul-title">Velin<br /><span>The Quiet Nest</span></h1>
+              <h1 class="seoul-title">
+                Velin<br /><span>The Quiet Nest</span>
+              </h1>
               <div class="seoul-tagline">
                 <p>Soft lights, gentle words,</p>
                 <p>hearts find their way.</p>
@@ -93,7 +105,11 @@
             </div>
 
             <div class="seoul-photo-box">
-              <img class="scroll-animate" src="./img/user_seoul.png" alt="seoulImg" />
+              <img
+                class="scroll-animate"
+                src="./img/user_seoul.png"
+                alt="seoulImg"
+              />
             </div>
           </div>
         </div>
@@ -102,10 +118,9 @@
         <div class="letter-container">
           <div class="track">
             <span
-              >It’s more than a stay.
-                It’s your cocoon for connection,
-                your spark of quiet chemistry,
-                your story gently beginning to bloom.</span
+              >It’s more than a stay. It’s your cocoon for connection, your
+              spark of quiet chemistry, your story gently beginning to
+              bloom.</span
             >
           </div>
         </div>
@@ -125,7 +140,11 @@
         <!-- 런던 -->
         <div class="london-container">
           <div class="london-photo">
-            <img class="scroll-animate" src="./img/user_london-bg.png" alt="London room" />
+            <img
+              class="scroll-animate"
+              src="./img/user_london-bg.png"
+              alt="London room"
+            />
           </div>
 
           <div class="london-red">
@@ -266,6 +285,7 @@
       const bgSection = document.querySelector(".home-bg");
       const contentSection = document.querySelector(".home-content");
       const header_icon = document.querySelector(".header-icon");
+      const header_logo = document.querySelector(".logo>img");
 
       const bgBottom = bgSection.offsetTop + bgSection.offsetHeight;
       const scrollY = window.scrollY;
@@ -274,10 +294,12 @@
         header.style.backgroundColor = "#FBF7F1";
         header.style.color = "#7D7D59";
         header_icon.setAttribute("src", "./img/mypage-icon2.svg");
+        header_logo.setAttribute("src", "./img/logo_green.svg");
       } else {
         header.style.backgroundColor = "transparent";
         header.style.color = "#FEFFCE";
         header_icon.setAttribute("src", "./img/mypage-icon.svg");
+        header_logo.setAttribute("src", "./img/logo_red.svg");
       }
     });
 
@@ -321,6 +343,5 @@
     );
 
     scrollImages.forEach((img) => observer1.observe(img));
-
   </script>
 </html>
