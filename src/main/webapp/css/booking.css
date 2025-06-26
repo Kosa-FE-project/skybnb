@@ -1,11 +1,9 @@
 /* 기본 설정 */
-* {
+/* * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Georgia', serif;
 }
-
+ */
 body {
   background-color: #fefaf3;
   color: #3d3d3d;
@@ -396,8 +394,8 @@ select option:hover {
 }
 
 .footer-logo img {
-  width: 40px;
-  height: 40px;
+  width: 120px;
+  height: 48px;
 }
 
 .footer-logo span {
