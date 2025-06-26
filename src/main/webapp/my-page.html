@@ -58,8 +58,9 @@
 </script>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">skyB&B</div>
+    <header class="header">
+      <h1 class="logo">HeartThread</h1>
+      <img class="header-icon" src="./img/mypage-icon2.svg" alt="icon" />
     </header>
     <div class="layout">
         <div class="sidebar">
@@ -241,11 +242,15 @@ document.querySelectorAll('.heart').forEach(btn => {
     const img = btn.querySelector('img');
     const isLiked = img.getAttribute('src').includes('mypage_jjim');
 
-    img.setAttribute('src',
-      isLiked ? './img/mypage/mypage_deljjim.svg' : './img/mypage/mypage_jjim.svg'
-    );
+    if (isLiked) {
+      img.setAttribute('src', './img/mypage/mypage_deljjim.svg');
+      
+      const card = btn.closest('.card');
+      card.remove(); 
+    } 
   });
 });
+
 
 window.addEventListener('scroll',()=>{
     const sidebar=document.querySelector('.sidebar');
@@ -264,5 +269,7 @@ window.addEventListener('scroll',()=>{
       sidebar.style.top = '200px';
     }
 });
+
+
  </script>
 </html>

@@ -14,20 +14,18 @@
 </head>
 <body>
     <header class="header">
-    <div class="logo">skyB&B</div>
-    <div class="icon-user">
-      <img class="header-icon" src="./img/user_icon.svg" alt="User" />
-    </div>
+      <h1 class="logo">HeartThread</h1>
+      <img class="header-icon" src="./img/mypage-icon2.svg" alt="icon" />
     </header>
     <!-- intro Section -->
     <section class="intro">
-        <h1>Paris Guesthouse</h1>
-        <p class="sub-title">Paris cozy sweet very nice Guesthouse</p>
+        <h1>Bloom, Maison Lune</h1>
+        <p class="sub-title">A place where soft moonlight and quiet hearts meet in Paris</p>
         <div class="intro-inner">
-            <img src="./img/booking_gh.svg" alt="Main Room" class="intro-image" />
+            <img src="./img/booking_gh.png" alt="Main Room" class="intro-image" />
             <div class="image-frame"></div>
             <div class="intro-tag">in Paris</div>
-            <div class="intro-label">COZY <br> PARIS GH</div>
+            <div class="intro-label">Bloom,<br> Maison Lune</div>
         </div>
     </section>
       <!-- Room Preview Section -->
@@ -39,15 +37,15 @@
         
         <div class="rooms">
             <div class="room-card" data-name="Room A">
-                <img src="./img/booking_rooma.svg" alt="Room A"/>
+                <img src="./img/booking_rooma.png" alt="Room A"/>
                 <div class="overlay">Room A</div>
             </div>
             <div class="room-card" data-name="Room B">
-                <img src="./img/booking_roomb.svg" alt="Room B"/>
+                <img src="./img/booking_roomb.png" alt="Room B"/>
                 <div class="overlay">Room B</div>
             </div>
             <div class="room-card" data-name="Room C">
-                <img src="./img/booking_roomc.svg" alt="Room C"/>
+                <img src="./img/booking_roomc.png" alt="Room C"/>
                 <div class="overlay">Room C</div>
             </div>
         </div>
@@ -67,30 +65,37 @@
           <p>Paris Guesthouse</p>
         </div>
         <div class="form-group">
-          <label for="roomtype">Room type</label>
+          <label>Room type</label>
           <input type="text" id="roomtype" name="roomtype" value="Room B" readonly />
         </div>
+
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required="required" />
         </div>
-        <div class="form-row">
-          <div class="form-group dates">
-            <div class="date-field">
-                <label for="checkindate">Checkin Date</label>
-                <input type="date" id="checkindate" name="checkindate" />
-            </div>
-            <div class="date-field">
-                <label for="checkoutdate">Checkout Date</label>
-                <input type="date" id="checkoutdate" name="checkoutdate" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="people">People</label>
-              <input type="number" id="peoplenum" name="peoplenum" min="1" value="1" />
+
+       <div class="form-row">
+        <div class="form-group half-group">
+          <label for="round">Reservation Round</label>
+          <select id="round" name="round" required>
+            <option value="" disabled selected>-- Please select a round --</option>
+            <option value="1">1st Round</option>
+            <option value="2">2nd Round</option>
+            <option value="3">3rd Round</option>
+          </select>
+        </div>
+
+        <div class="form-group half-group">
+          <label for="gender">Gender</label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="male" /> Male</label>
+            <label><input type="radio" name="gender" value="female" /> Female</label>
           </div>
         </div>
-        <button type="submit" class="btn-reserve">reserve</button>
+      </div>
+
+
+      <button type="submit" class="btn-reserve">reserve</button>
       </form>
     </div>
   </section>
@@ -172,37 +177,48 @@ $(function(){
         });
     });
   
-    document.querySelector('.reservation-form').addEventListener('submit',function(e){
-        e.preventDefault();
+   document.querySelector('.reservation-form').addEventListener('submit', function (e) {
+  e.preventDefault();
 
-        Swal.fire({
-          title:'Are you sure?',
-          text:'Click confirm to proceed with your reservation.',
-          icon:'question',
-          showCancelButton: true,
-          confirmButtonText: 'Confirm',
-          cancelButtonText: 'Cancel',
-          customClass: {
-            popup: 'my-swal-popup',
-            confirmButton: 'my-confirm-btn',
-            cancelButton: 'my-cancel-btn'
-          }
-        }).then((result)=>{
-          if(result.isConfirmed){
-        	//데이터 불러오기
-	          const data = {
-			    roomtype: $('#roomtype').val(),
-			    username: $('#name').val(),
-			    checkindate: $('#checkindate').val(),
-			    checkoutdate: $('#checkoutdate').val(),
-			    peoplenum: $('#peoplenum').val()
-			  };
-	       // localStorage 저장
-	          localStorage.setItem('reservationData', JSON.stringify(data));
-	          window.location.href = './my-page.html';
-           /*this.submit(); */
-          }
-        });
+  const selectedGender = $('input[name="gender"]:checked').val();
+
+  if (!selectedGender) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Gender Required',
+      text: 'Please select your gender before proceeding.'
     });
+    return;
+  }
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'Click confirm to proceed with your reservation.',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Confirm',
+    cancelButtonText: 'Cancel',
+    customClass: {
+      popup: 'my-swal-popup',
+      confirmButton: 'my-confirm-btn',
+      cancelButton: 'my-cancel-btn'
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const data = {
+        guesthouse: $('p:contains("Guesthouse")').text().trim(),
+        roomtype: $('#roomtype').val(),
+        username: $('#name').val(),
+        round: $('#round').val(),
+        gender: selectedGender
+      };
+
+      localStorage.setItem('reservationData', JSON.stringify(data));
+      window.location.href = './my-page.html';
+    }
+  });
+});
+
+
 </script>
 </html>
