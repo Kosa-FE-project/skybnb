@@ -10,6 +10,10 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="stylesheet" href="./css/user-home.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -44,16 +48,16 @@
           <div class="paris-container">
             <div class="paris-wrapper">
               <div class="paris-photo">
-                <img src="./img/image (2).png" alt="paris" />
+                <img class="scroll-animate" src="./img/image (2).png" alt="paris" />
               </div>
               <div class="paris-content">
-                <div class="paris-title">
+                <div class="paris-title text-slide-right">
                   Bloom,
                   <br />
-                  <span class="paris-gh">Maison Lune</span>
+                  <span class="paris-gh text-slide-right">Maison Lune</span>
                 </div>
                 <div class="paris-text">
-                  Just a room.
+                  <span text-slide-right>Just a room.</span>
                   <br />
                   or maybe fate.
                 </div>
@@ -89,7 +93,7 @@
             </div>
 
             <div class="seoul-photo-box">
-              <img src="./img/user_seoul.png" alt="seoulImg" />
+              <img class="scroll-animate" src="./img/user_seoul.png" alt="seoulImg" />
             </div>
           </div>
         </div>
@@ -110,7 +114,7 @@
         <div class="rome-container">
           <div class="rome-overlay"></div>
           <div class="rome-photo">
-            <img src="./img/user_rome.png" alt="rome" />
+            <img class="scroll-animate" src="./img/user_rome.png" alt="rome" />
           </div>
           <div class="rome-content">
             <div class="rome-title">Guest</div>
@@ -121,7 +125,7 @@
         <!-- 런던 -->
         <div class="london-container">
           <div class="london-photo">
-            <img src="./img/user_london-bg.png" alt="London room" />
+            <img class="scroll-animate" src="./img/user_london-bg.png" alt="London room" />
           </div>
 
           <div class="london-red">
@@ -243,7 +247,7 @@
         window.location.href = "./index.html";
       });
 
-      $(".paris-container img, .seoul-container img, .rome-container img, .london-container img").on("click", function () {
+      $(".paris-container img, .seoul-container img, .rome-container img, .london-photo img").on("click", function () {
         window.location.href = "./booking.html";
       });
 
@@ -284,5 +288,30 @@
     );
 
     observer.observe(document.querySelector(".rome-content"));
+
+    // amimate css 효과들...
+    // 스크롤시 이미지 확대
+    const scrollImages = document.querySelectorAll(".scroll-animate");
+
+    const observer1 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            el.classList.add("animate__animated", "animate__pulse");
+
+            setTimeout(() => {
+              el.classList.remove("animate__animated", "animate__pulse");
+            }, 1000);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    scrollImages.forEach((img) => observer1.observe(img));
+
   </script>
 </html>

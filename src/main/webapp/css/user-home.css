@@ -14,6 +14,34 @@ img {
   cursor: pointer;
 }
 
+.paris-container img,
+.seoul-container img,
+.rome-container img{
+  transition: transform 0.3s ease;
+}
+
+.paris-container img:hover,
+.seoul-container img:hover,
+.rome-container img:hover{
+  transform: scale(1.03); 
+}
+
+
+.london-photo {
+  overflow: hidden; 
+}
+
+.london-photo img {
+  transition: transform 0.3s ease; 
+  display: block; 
+  width: 100%;
+  height: auto;
+}
+
+.london-photo img:hover {
+  transform: scale(1.03); 
+}
+
 /* 파리 */
 .paris-container {
     /* height 주면 될듯 - 크기 조절용 */
