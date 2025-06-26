@@ -24,8 +24,10 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.header .logo {
-  margin: 0;
+.header .logo img{
+  width:120px;
+  height: 48px;
+  margin-top: 10px;
 }
 .logo{
 	cursor: pointer;

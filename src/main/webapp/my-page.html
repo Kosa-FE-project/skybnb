@@ -59,7 +59,7 @@
 </head>
 <body>
     <header class="header">
-      <h1 class="logo">HeartThread</h1>
+      <h1 class="logo"><img src="./img/logo_green.svg" /></h1>
       <img class="header-icon" src="./img/mypage-icon2.svg" alt="icon" />
     </header>
     <div class="layout">
@@ -205,6 +205,11 @@
 
 </body>
 <script>
+
+  $('.logo').on('click',function(){
+		 window.location.href = "./index.html";
+	 })
+
 $(function(){
 	const ls = JSON.parse(localStorage.getItem('reservationData'));
 	if (ls) {
