@@ -210,7 +210,8 @@ $(function(){
         roomtype: $('#roomtype').val(),
         username: $('#name').val(),
         round: $('#round').val(),
-        gender: selectedGender
+        gender: selectedGender,
+        reservationImage: document.querySelector('.reservation-image img').getAttribute('src')
       };
 
       localStorage.setItem('reservationData', JSON.stringify(data));

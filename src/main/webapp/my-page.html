@@ -213,6 +213,9 @@ $(function(){
 	    $('#name').val(ls.username);
 	    $('#round').val(ls.round+'st round');
 	    $('#gender').val(ls.gender);
+      if (ls.reservationImage) {
+      $('.reservation-image img').attr('src', ls.reservationImage);
+    }
 	}
 });
 document.querySelectorAll('.card').forEach(card => {
