@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/booking.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <header class="header">
+      <h1 class="logo">HeartThread</h1>
+      <img class="header-icon" src="./img/mypage-icon2.svg" alt="icon" />
+    </header>
+    <!-- intro Section -->
+    <section class="intro">
+        <h1>Velin, The Quiet Nest</h1>
+        <p class="sub-title">Soft lights, gentle words, hearts find their way.</p>
+        <div class="intro-inner">
+            <img src="./img/booking2_gh.png" alt="Main Room" class="intro-image" />
+            <div class="image-frame"></div>
+            <div class="intro-tag">in Seoul</div>
+            <div class="intro-label">Velin,<br>The Quiet Nest</div>
+        </div>
+    </section>
+      <!-- Room Preview Section -->
+    <section class="rooms-section">
+        
+            <div class="bg-text">HAVE A GOOD TRIP</div>
+            <div class="bg-text">HAVE A GOOD TRIP</div>
+            <div class="bg-text">HAVE A GOOD TRIP</div>
+        
+        <div class="rooms">
+            <div class="room-card" data-name="Room A">
+                <img src="./img/booking2_rooma.png" alt="Room A"/>
+                <div class="overlay">Room A</div>
+            </div>
+            <div class="room-card" data-name="Room B">
+                <img src="./img/booking2_roomb.png" alt="Room B"/>
+                <div class="overlay">Room B</div>
+            </div>
+            <div class="room-card" data-name="Room C">
+                <img src="./img/booking2_roomc.png" alt="Room C"/>
+                <div class="overlay">Room C</div>
+            </div>
+        </div>
+    </section>
+    <!-- Reservation Form -->
+  <section class="reservation">
+    <h2>Make a reservation</h2>
+    <hr>
+    <br><br>
+    <div class="reservation-container">
+      <div class="reservation-image">
+        <img src="./img/booking_roomb.svg" alt="Room B" />
+      </div>
+      <form class="reservation-form">
+        <div class="form-group">
+          <label>Guesthouse name</label>
+          <p>Velin Guesthouse</p>
+        </div>
+        <div class="form-group">
+          <label>Room type</label>
+          <input type="text" id="roomtype" name="roomtype" value="Room B" readonly />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required="required" />
+        </div>
+
+       <div class="form-row">
+        <div class="form-group half-group">
+          <label for="round">Reservation Round</label>
+          <select id="round" name="round" required>
+            <option value="" disabled selected>-- Please select a round --</option>
+            <option value="1">1st Round</option>
+            <option value="2">2nd Round</option>
+            <option value="3">3rd Round</option>
+          </select>
+        </div>
+
+        <div class="form-group half-group">
+          <label for="gender">Gender</label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="male" /> Male</label>
+            <label><input type="radio" name="gender" value="female" /> Female</label>
+          </div>
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn-reserve">reserve</button>
+      </form>
+    </div>
+  </section>
+   <!-- 푸터 -->
+             <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <!-- <img src="로고" alt="logo" /> -->
+                        <span>🗺️ skyB&B.</span>
+                    </div>
+
+                    <div class="footer-contact">
+                    <h3>Contact us</h3>
+                    <ul>
+                        <li>
+                        <strong>So yuna</strong><br />
+                        <a href="mailto:seacrab808@naver.com">seacrab808@naver.com</a>
+                        </li>
+                        <li>
+                        <strong>Lee</strong><br />
+                        <a href="mailto:dalbogi5@gmail.com">dalbogi5@gmail.com</a>
+                        </li>
+                        <li>
+                        <strong>Kang</strong><br />
+                        <a href="mailto:alsrlwpdhkd@gmail.com">alsrlwpdhkd@gmail.com</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="footer-bottom">
+                    <p>© 2025 한국소프트웨어산업협회. All rights reserved.</p>
+                </div>
+            </footer>
+</body>
+<script>
+$(function(){
+	 //페이지 이동 코드
+	 $('.header-icon').on('click',function(){
+		 window.location.href = "./my-page.html"
+	 })
+	 
+	 $('.logo').on('click',()=>{
+		  window.location.href = "./user-home.html";
+	  })
+});
+    document.querySelectorAll('.room-card').forEach(card => {
+    const img = card.querySelector('img');
+    const name = img.getAttribute('name');
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    overlay.textContent = name;
+
+    card.appendChild(overlay);
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const roomCards = document.querySelectorAll(".room-card");
+        const reservationSection = document.querySelector(".reservation");
+        const reservationImage = document.querySelector(".reservation-image img");
+        const roomTypeInput = document.querySelector("#roomtype");
+
+        reservationSection.style.display = "none";
+
+        roomCards.forEach(card => {
+            card.addEventListener("click", () => {
+            
+            reservationSection.style.display = "block";
+
+            const imgSrc = card.querySelector("img").getAttribute("src");
+            reservationImage.setAttribute("src", imgSrc);
+
+            const roomName = card.getAttribute("data-name");
+            roomTypeInput.value = roomName;
+
+            reservationSection.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    });
+  
+   document.querySelector('.reservation-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const selectedGender = $('input[name="gender"]:checked').val();
+
+  if (!selectedGender) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Gender Required',
+      text: 'Please select your gender before proceeding.'
+    });
+    return;
+  }
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'Click confirm to proceed with your reservation.',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Confirm',
+    cancelButtonText: 'Cancel',
+    customClass: {
+      popup: 'my-swal-popup',
+      confirmButton: 'my-confirm-btn',
+      cancelButton: 'my-cancel-btn'
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const data = {
+        guesthouse: $('p:contains("Guesthouse")').text().trim(),
+        roomtype: $('#roomtype').val(),
+        username: $('#name').val(),
+        round: $('#round').val(),
+        gender: selectedGender
+      };
+
+      localStorage.setItem('reservationData', JSON.stringify(data));
+      window.location.href = './my-page.html';
+    }
+  });
+});
+
+
+</script>
+</html>
