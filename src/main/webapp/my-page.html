@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/mypage.css">
+    <link rel="stylesheet" href="./css/color.css">
     <!-- slick 스타일 CDN -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
@@ -137,30 +138,24 @@
                     <div class="reservation-wrap">
                         <label>
                         <span>Location</span>
-                        <input type="text" value="Paris Guesthouse" readonly />
+                        <input type="text" id="guesthouse" readonly />
                         </label>
                         <label>
                         <span>Room type</span>
-                        <input type="text" id="roomtype" value="Room A" readonly />
+                        <input type="text" id="roomtype" readonly />
                         </label>
                         <label>
                         <span>Reservation person</span>
-                        <input type="text" id="name" value="Sophia Jung" readonly />
+                        <input type="text" id="name" readonly />
                         </label>
                         <label>
-                        <span>Number of people</span>
-                        <input type="text" id="peoplenum" value="adult 2" readonly />
+                        <span>Reservation Round</span>
+                        <input type="text" id="round"readonly />
                         </label>
-                        <div class="reservation-checkdate">
-                            <label class="checkin">
-                            <span>Check in</span>
-                            <input type="text" id="checkindate" value="2025.09.13" readonly />
-                            </label>
-                            <label class="checkout">
-                            <span>Check out</span>
-                            <input type="text" id="checkoutdate" value="2025.09.25" readonly />
-                            </label>
-                        </div>
+                        <label>
+                        <span>Gender</span>
+                        <input type="text" id="gender" readonly />
+                        </label>
                     </div>
                 </div>
                 <div class="reservation-image">
@@ -175,7 +170,7 @@
                 <div class="footer-content">
                     <div class="footer-logo">
                         <!-- <img src="로고" alt="logo" /> -->
-                        <span>🗺️ skyB&B.</span>
+                        <span><img src="./img/logo_red.svg">HEART THREAD</span>
                     </div>
 
                     <div class="footer-contact">
@@ -186,11 +181,11 @@
                         <a href="mailto:seacrab808@naver.com">seacrab808@naver.com</a>
                         </li>
                         <li>
-                        <strong>Lee</strong><br />
+                        <strong>Lee Taeran</strong><br />
                         <a href="mailto:dalbogi5@gmail.com">dalbogi5@gmail.com</a>
                         </li>
                         <li>
-                        <strong>Kang</strong><br />
+                        <strong>Kang mingi</strong><br />
                         <a href="mailto:alsrlwpdhkd@gmail.com">alsrlwpdhkd@gmail.com</a>
                         </li>
                     </ul>
@@ -213,11 +208,11 @@
 $(function(){
 	const ls = JSON.parse(localStorage.getItem('reservationData'));
 	if (ls) {
-		$('#roomtype').val(ls.roomtype);
+      $('#guesthouse').val(ls.guesthouse);
+		  $('#roomtype').val(ls.roomtype);
 	    $('#name').val(ls.username);
-	    $('#checkindate').val(ls.checkindate);
-	    $('#checkoutdate').val(ls.checkoutdate);
-	    $('#peoplenum').val(ls.peoplenum);
+	    $('#round').val(ls.round+'st round');
+	    $('#gender').val(ls.gender);
 	}
 });
 document.querySelectorAll('.card').forEach(card => {

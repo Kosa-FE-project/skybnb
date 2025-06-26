@@ -74,6 +74,7 @@ body {
   align-items: center;
   margin-left: 80px;
   z-index: 50;
+  transition: top 0.2s ease-in-out;
 }
 .sidebar.stop{
     position: absolute;
@@ -501,18 +502,6 @@ label span {
   gap: 4px;
 }
 
-.reservation-checkdate {
-  display: flex;
-  gap: 20px;
-}
-
-.reservation-checkdate label {
-  flex: 1;
-}
-.reservation-checkdate input {
-  width: 83%;
-}
-
 .reservation-wrap input {
   border: 2px solid #d6daf6;
   border-radius: 10px;
@@ -575,14 +564,12 @@ label span {
 }
 
 .footer-logo img {
-  width: 40px;
-  height: 40px;
+  width: 120px;
+  height: 48px;
 }
-
-.footer-logo span {
-  font-size: 24px;
-  font-weight: bold;
-  color: #D7D7D7;
+.footer-logo span{
+  font-family: "Inria Serif", serif !important;
+  color: var(--color-primary);
 }
 
 .footer-contact {
