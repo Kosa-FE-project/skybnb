@@ -129,8 +129,10 @@
 }
 
 .admin-item.selected {
-  background-color: #e6ffe6;
+  background-color: #FF6B8A;
+  color : white;
 }
+
 .admin-map {
 	flex:1;
 	width: 370px;
